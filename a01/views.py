@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.core import serializers
 # Create your views here.
 
 
@@ -7,6 +7,7 @@ from django.views.generic import TemplateView
 from django.views import View
 
 from django.http import JsonResponse
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 
 from a01.models import Customer
@@ -44,12 +45,19 @@ class GraphView(TemplateView):
         return context
 
 
+################################################################################
+# DETAIL VIEWS
+
+
 class DetailView(View):
     get_class = None
 
     def get(self, req, id):
         obj = get_object_or_404(self.get_class, pk=id)
-        return JsonResponse(serialize('json', obj))
+
+        json_data = serializers.serialize('json', [obj, ])
+
+        return HttpResponse(json_data, content_type='json')
 
 
 class MovieDetailView(DetailView):
@@ -69,4 +77,37 @@ class CustomerDetailView(DetailView):
 
 
 class PaymentDetailView(DetailView):
+    get_class = Payment
+
+################################################################################
+# DETAIL VIEWS
+
+
+class ListView(View):
+    get_class = None
+
+    def get(self, *args):
+        obj_list = self.get_class.objects.all()
+        json_data = serializers.serialize('json', obj_list)
+
+        return HttpResponse(json_data, content_type='json')
+
+
+class MovieListView(ListView):
+    get_class = Movie
+
+
+class HallListView(ListView):
+    get_class = Hall
+
+
+class ScreeningListView(ListView):
+    get_class = Screening
+
+
+class CustomerListView(ListView):
+    get_class = Customer
+
+
+class PaymentListView(ListView):
     get_class = Payment
