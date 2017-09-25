@@ -40,8 +40,9 @@ class Screening(models.Model, ToJson):
                 validators=[MaxValueValidator(1), MinValueValidator(0)]),
             size=20,
         ),
-        size=20,
+        size=20, blank=True, null=True
     )
+    totalcustomer = models.PositiveIntegerField(default=0)
 
     movie = models.ForeignKey(Movie)
     hall = models.ForeignKey(Hall)
@@ -55,9 +56,19 @@ class Customer(models.Model, ToJson):
     email = models.EmailField()
     screen = models.ForeignKey(Screening)
     seats = models.PositiveIntegerField(validators=[MaxValueValidator(400)])
+    bseats = ArrayField(
+        ArrayField(
+            models.IntegerField(
+                default=0,
+                validators=[MaxValueValidator(19), MinValueValidator(0)]),
+            size=2,
+        ),
+        size=20, blank=True, null=True
+    )
 
 
 class Payment(models.Model, ToJson):
+    customer = models.ForeignKey(Customer)
     cardnum = models.CharField(max_length=30)
     expdate = models.DateField()
     startdate = models.DateField()
