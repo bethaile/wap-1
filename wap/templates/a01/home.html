@@ -1,10 +1,143 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-    </head>
-    <body>
 
-    </body>
+<!DOCTYPE html>
+<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+   <!--- Basic Page Needs
+   ================================================== -->
+   <meta charset="utf-8">
+	<title>{{TITLE}}</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+   <!-- Mobile Specific Metas
+   ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  {% load static %}
+
+	<!-- CSS
+    ================================================== -->
+   <link rel="stylesheet" href="{% static "css/default.css" %}">
+	<link rel="stylesheet" href="{% static "css/layout.css" %}">
+   <link rel="stylesheet" href="{% static "css/media-queries.css" %}">
+   <link rel="stylesheet" href="{% static "css/magnific-popup.css" %}">
+
+
+   <!-- Script
+   ================================================== -->
+	<script src="{% static "js/modernizr.js" %}"></script>
+  <script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
+
+   <!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="{% static "favicon.png" %}" >
+
+</head>
+
+<body>
+
+   <!-- Header
+   ================================================== -->
+   <header id="home">
+
+      <nav id="nav-wrap">
+
+         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+	      <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+
+         <ul>
+
+           <div id="nav" class="nav">
+
+             <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
+             <li><a class="smoothscroll" href="#about">About</a></li>
+  	         <li><a class="smoothscroll" href="#order">Order</a></li>
+             <!-- <li><a class="smoothscroll" href="#testimonials">Testimonials</a></li> -->
+             <li><a class="smoothscroll" href="#statistic">Statistic</a></li>
+           </div>
+
+         </ul> <!-- end #nav -->
+
+      </nav> <!-- end #nav-wrap -->
+
+
+      <div class="row banner">
+         <div class="banner-text">
+            <h1 class="responsive-headline">WAP: Movie Theatre</h1>
+            <h3>
+             Our movie theatre is Awesome<a class="smoothscroll" href="#about">About</a> by <a class="smoothscroll" href="#about">scrolling</a> .
+            </h3>
+            <hr />
+         </div>
+      </div>
+
+      <p class="scrolldown">
+         <a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
+      </p>
+
+   </header> <!-- Header End -->
+
+
+   <!-- About Section
+   ================================================== -->
+   <section id="about">
+
+       {% include 'a01/movie.html' %}
+
+   </section> <!-- About Section End-->
+
+
+   <!-- Order Section
+   ================================================== -->
+   <section id="order">
+       {% include 'a01/order.html' %}
+
+   </section> <!-- Order Section End-->
+
+
+   <!-- Statistic Section
+   ================================================== -->
+   <section id="statistic">
+
+       {% include 'a01/statistic.html' %}
+   </section> <!-- Statistic Section End-->
+
+   <footer>
+
+      <div class="row">
+
+         <div class="twelve columns">
+
+
+            <ul class="copyright">
+               <li>&copy; Copyright</li>
+               <li>WAP PROJECT team</li>
+            </ul>
+
+         </div>
+
+         <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#home"><i class="icon-up-open"></i></a></div>
+
+      </div>
+
+   </footer> <!-- Footer End-->
+
+   <!-- Java Script
+   ================================================== -->
+
+
+       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+       <script>window.jQuery || document.write('<script src="{% static "js/jquery-1.10.2.min.js" %}"><\/script>')</script>
+       <script type="text/javascript" src="{% static "js/jquery-migrate-1.2.1.min.js" %}"></script>
+
+       <script src="{% static "js/jquery.flexslider.js" %}"></script>
+       <script src="{% static "js/waypoints.js" %}"></script>
+       <script src="{% static "js/jquery.fittext.js" %}"></script>
+       <script src="{% static "js/magnific-popup.js" %}"></script>
+       <script src="{% static "js/init.js" %}"></script>
+
+</body>
+
 </html>
