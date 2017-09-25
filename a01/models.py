@@ -1,13 +1,21 @@
-
+from django.core import serializers
 from django.db import models
+# from a01.base import baseModel
 from django.contrib.postgres.fields import ArrayField
 from django.core.validators import MaxValueValidator, MinValueValidator
+
+
+class ToJson(object):
+
+    def to_json(self):
+
+        return serializers.serialize('json', self.objects.all())
 
 
 # Create your models here.
 
 
-class Movie(models.Model):
+class Movie(models.Model, ToJson):
     title = models.CharField(max_length=100)
     genre = ArrayField(models.CharField(max_length=50, blank=True))
     runtime = models.PositiveIntegerField()
@@ -17,12 +25,12 @@ class Movie(models.Model):
     yurl = models.URLField(max_length=500, null=True, blank=True)
 
 
-class Hall(models.Model):
+class Hall(models.Model, ToJson):
     number = models.CharField(max_length=5)
     capacity = models.PositiveIntegerField(default=400)
 
 
-class Screening(models.Model):
+class Screening(models.Model, ToJson):
     stime = models.TimeField()
     sdate = models.DateField()
     seats = ArrayField(
@@ -43,13 +51,13 @@ class Screening(models.Model):
         return self.hall.capacity
 
 
-class Customer(models.Model):
+class Customer(models.Model, ToJson):
     email = models.EmailField()
     screen = models.ForeignKey(Screening)
     seats = models.PositiveIntegerField(validators=[MaxValueValidator(400)])
 
 
-class Payment(models.Model):
+class Payment(models.Model, ToJson):
     cardnum = models.CharField(max_length=30)
     expdate = models.DateField()
     startdate = models.DateField()
