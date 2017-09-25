@@ -1,21 +1,23 @@
+
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+
 from django.core import serializers
+from django.core.serializers import serialize
 # Create your views here.
 
 
-from django.views.generic import TemplateView
 from django.views import View
+from django.views.generic import TemplateView
 
 from django.http import JsonResponse
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
 
 from a01.models import Customer
 from a01.models import Hall
 from a01.models import Movie
 from a01.models import Payment
 from a01.models import Screening
-from django.core.serializers import serialize
 
 
 class HomeView(TemplateView):
@@ -25,23 +27,6 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         """Context data."""
         context = super(HomeView, self).get_context_data(**kwargs)
-        context['movies'] = Movie.objects.all()
-        return context
-
-
-class OrderView(TemplateView):
-
-    def get_context_data(self, **kwargs):
-        """Context data."""
-        context = super(OrderView, self).get_context_data(**kwargs)
-        return context
-
-
-class GraphView(TemplateView):
-    template_name = 'a01/graph.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(GraphView, self).get_context_data(**kwargs)
         return context
 
 
@@ -111,3 +96,14 @@ class CustomerListView(ListView):
 
 class PaymentListView(ListView):
     get_class = Payment
+
+
+class TicketOrder(View):
+
+    def post(self):
+
+        
+
+
+
+        pass
