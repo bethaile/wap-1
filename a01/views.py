@@ -1,4 +1,9 @@
 
+import json
+import datetime
+
+from django.db import models
+
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 
@@ -73,9 +78,21 @@ class ListView(View):
 
     def get(self, *args):
         obj_list = self.get_class.objects.all()
-        json_data = serializers.serialize('json', obj_list)
-
-        return HttpResponse(json_data, content_type='json')
+        datas = []
+        for i in obj_list:
+            data = {}
+            for k in i._meta.get_fields():
+                try:
+                    val = getattr(i, k.name)
+                    if isinstance(val, datetime.date) or isinstance(val, datetime.datetime) or isinstance(val, datetime.time):
+                        val = val.isoformat()
+                    elif isinstance(val, models.Model):
+                        val = val.__str__()
+                except:
+                    continue
+                data[k.name] = val
+            datas.append(data)
+        return HttpResponse(json.dumps(datas), content_type='json')
 
 
 class MovieListView(ListView):
@@ -102,7 +119,7 @@ class TicketOrder(View):
 
     def post(self):
 
-        
+
 
 
 
