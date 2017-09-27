@@ -1,5 +1,8 @@
 {% load static %}
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style>
 
@@ -13,68 +16,6 @@ section {
   padding: 10px;
   margin: 10px;
 
- }
-
- .right
-
-{float:right}
-
-.left
-{float:left}
-
- .container {
-    padding-top: 40px;
-}
-.glyphicon-minus
-{
-
-	}
-</style>
-<meta charset="utf-8">
-<title>Book seats</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-<script type="text/javascript">
-
-$(document).on('click', '.number-spinner button', function () {
-	var btn = $(this),
-		oldValue = btn.closest('.number-spinner').find('input').val().trim(),
-		newVal = 0;
-
-	if (btn.attr('data-dir') == 'up') {
-		newVal = parseInt(oldValue) + 1;
-	} else {
-		if (oldValue > 1) {
-			newVal = parseInt(oldValue) - 1;
-		} else {
-			newVal = 1;
-		}
-	}
-	btn.closest('.number-spinner').find('input').val(newVal);
-});
-
- var seats = [
-	[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-   ];
-var sel_seats=0;
-function generate_table(x,y) {
-  // get the reference for the body
-  <!--var body = document.getElementsByTagName("body")[0];
-  document.getElementById("btn").disabled = true;
-  // creates a <table> element and a <tbody> element
-
-    var tbl = document.createElement("table");
-	var tblBody = document.createElement("tbody");
 
 
 
@@ -218,7 +159,6 @@ else
 	</div>
 </div>
 
-
   </article>
   <article>
   <table width="50px" height="40%" border="1" align="center">
@@ -262,3 +202,82 @@ else
   УИХ-ын гишүүн С.Жавхлан:
 Top5
   </div>
+<div class="row" id="timelist">
+
+</div>
+
+
+
+
+<script type="text/javascript">
+
+jQuery(document).ready(function($) {
+    $.ajax({
+        type: "GET",
+        dataType : 'json',
+        url: '/screening/list/',
+        success: function (data){
+
+            var html = ''
+            for (var i = 0, len = 6; i < len; i++) {
+                var td = '<div class="two columns"><button hall="'+data[i].fields.hall+'" sdate="'+ data[i].fields.sdate+'" stime="'+ data[i].fields.stime +'" class="btn mybuttons">' + data[i].fields.movie + '</button></div>';
+                html += td;
+            }
+            html += '';
+            $('#movielist').html(html);
+        },
+        failure: function() {alert("Error!");}
+    });
+});
+
+
+$(document).on('click','.mybuttons', function(){
+    var hall = $(this).attr('hall');
+    var sdate = $(this).attr('sdate');
+    var stime = $(this).attr('stime');
+    var seats = $(this).attr('seats');
+
+    $('#timelist').html(
+
+    );
+
+    console.log(datas);
+
+});
+
+
+jQuery(document).ready(function($) {
+
+
+        var form = $('#myform');
+        form.submit(function(e){
+            e.preventDefault();
+
+            var email = $("#email").val();
+            var cardnum = $("#cardnum").val();
+            var startdate = $("#startdate").val();
+            var expdate = $("#expdate").val();
+            var token = $("input[name~='csrfmiddlewaretoken']").first().val();
+
+            $.ajax({
+                type: 'POST',
+                url: '/payment/pay/',
+                data: {
+                    'csrfmiddlewaretoken': token,
+                    'email': email,
+                    'cardnum': cardnum,
+                    'startdate': startdate,
+                    'expdate': expdate,
+                },
+                dataType: "json",
+                success: function(resultData) {
+                    alert("Save Complete")
+                }
+            });
+        });
+
+});
+
+
+
+</script>

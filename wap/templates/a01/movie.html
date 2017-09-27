@@ -1,118 +1,126 @@
 {% load static %}
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    $.ajax({
+        url: "/movie/list/",
+        type: "GET",
+        dataType: "json",
+    }).done(function (data) {
+        $.each(data, function (index, value) {
+            var html = '';
+            html += '<div class="item ' + (index == 0 ? '' : 'active') + '">';
+            html += '   <div class="div-left">';
+            html += '       <p> ' + value.fields.description + '<p/>';
+            html += '       <p> Release date: ' + value.fields.release_date + '<br/>';
+            html += '           Director: ' + value.fields.director + '<br/>';
+            html += '           Screenplay: ' + value.fields.screenplay + '<br/>';
+            html += '           Music composed by: ' + value.fields.composer + '<br/>';
+            html += '           Producers: ' + JSON.parse(value.fields.producers) + '</p>';
+            html += '  </div>';
+            html += '   <div class="ticket-card" data-opentext="Timetable1 > Order" data-closetext="Close">';
+            html += '       <div class="cover">';
+            html += '           <div class="img">';
+            html += '               <img src="static/images/' + value.fields.img + '" alt="">';
+            html += '               <span class="movie-rate">' + value.fields.category + '</span>';
+            html += '           </div>';
+            html += '           <div class="info">';
+            html += '               <div class="going">';
+            html += '                   <i class="fa fa-clock-o" title="Period"></i>' + value.fields.runtime + 'm';
+            html += '               </div>';
+            html += '           </div>';
+            html += '       </div>';
+            html += '       <div class="body">';
+            html += '           <div class="artist">';
+            html += '               <h6 class="info">' + JSON.parse(value.fields.genre) + '</h6>';
+            html += '               <a class="name" href="#">';
+            html += '                   <h4>' + value.fields.title + '</h4>';
+            html += '               </a>';
+            html += '           </div>';
+            html += '           <div class="clearfix"></div>';
+            html += '           <div class="info info-branch">';
+            html += '               <p class="location">';
+            html += '                   <i class="fa fa-map-marker" title="Branches"></i>';
+            html += '                   <span class="LA">Los Angeles</span>';
+            html += '                   <span class="CH">Chicago</span>';
+            html += '                   <span class="SF">San Francisco</span>';
+            html += '                   <span class="FR">Fairfield</span>';
+            html += '               </p>';
+            html += '           </div>';
+            html += '           <div class="clearfix"></div>';
+            html += '       </div>';
+            html += '       <div id="timetable" class="schedule timelist collapse" aria-expanded="false">' +
+                            '</div>';
+            html += '       <div class="footer">';
+            html += '           <button id="'+value.pk+'" class="btn toggle-tickets">Order</button>';
+            html += '       </div>';
+            html += '   </div>';
+            html += '   <div class="div-right">';
+            html += '       <h1>Official trailer</h1>';
+            html += '       <iframe src="' + value.fields.yurl + '" frameborder="0" allowfullscreen>';
+            html += '       </iframe>';
+            html += '   </div>';
+            html += '</div>';
+            $("#movies").append(html);
+        });
+
+         document.getElementById('prevBtn').click();
+
+        $(".footer>button").on("click", function(){
+            var clicked = $(this);
+            if(clicked.html()  == "Order" ){
+                clicked.html("Close");
+                console.log($('.footer>button').attr('id'));
+                $(".schedule").addClass("in");
+                 $.ajax({
+                    url: "/screening/movie/" + $(this).attr('id'),
+                    type: "GET",
+                    dataType: "json",
+                }).done(function (data) {
+                    $.each(data, function (index, value) {
+{#                        var html = '';#}
+{#                        $("#movies").append(html);#}
+                    });
+                 });
+            }
+            else {
+                 clicked.html("Order");
+                 $(".schedule").removeClass("in");
+            }
+        });
+    });
+
+
+    $('.carousel-inner .item').each(function () {
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+
+        if (next.next().length > 0) {
+            next.next().children(':first-child').clone().appendTo($(this));
+        } else {
+            $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+        }
+    });
+    $(document).ready(function () {
+    });
+
+
+</script>
+
 <div class="row">
-    <div class="col_md">
-        <div class="lSSlideOuter">
-            <div class="lSSlideWrapper usingCss" style="transition-duration: 400ms;transition-timing-function: ease;">
-                <ul id="content-slider" class="content-slider lightSlider lSSlide"
-                    style="width: 5550px; transform: translate3d(-2220px, 0px, 0px); height: 720px; padding-bottom: 0%;">
-                    <li class="clone left" style="margin-right: 20px;">
-                        <div class="ticket-card " data-opentext="Timetable > Order" data-closetext="Хаах">
-                        </div>
-                    </li>
-                    <li class="clone left" style="margin-right: 20px;">
-                        <div class="ticket-card " data-opentext="Timetable > Order" data-closetext="Хаах">
-
-                        </div>
-                    </li>
-                    <li class="clone left" style="margin-right: 20px;">
-                        <div class="ticket-card " data-opentext="Timetable > Order" data-closetext="Хаах">
-                        </div>
-                    </li>
-                    <li class="clone left" style="margin-right: 20px;">
-                        <div class="ticket-card " data-opentext="Timetable > Order" data-closetext="Хаах">
-                        </div>
-                    </li>
-                    <li class="lslide" style="margin-right: 20px;">
-                        <div class="ticket-card " data-opentext="Timetable > Order" data-closetext="Хаах">
-
-                        </div>
-                    </li>
-                    <li class="lslide" style="margin-right: 20px;">
-                        <div class="ticket-card " data-opentext="Timetable > Order" data-closetext="Хаах">
-                        </div>
-                    </li>
-                    <li class="lslide" style="margin-right: 20px;">
-                        <div class="ticket-card " data-opentext="Timetable > Order" data-closetext="Хаах">
-                            <div class="cover">
-                                <div class="img">
-                                    <img src="/static/images/about/star-wars.jfif" alt="">
-                                    <a href="https://www.youtube.com/watch?v=6Nxc-3WpMbg" class="trailer fancybox-media"
-                                       onclick="gatr('Star Wars')" rel="media-gallery"></a>
-                                    <span class="movie-rate">PG</span>
-                                </div>
-                                <div class="info">
-                                    <div class="going">
-                                        <i class="fa fa-clock-o" title="Period"></i> 2h 21m
-                                    </div>
-                                    <div class="tickets-left">
-                                        <a href="#">Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="body">
-                                <div class="artist">
-                                    <h6 class="info">Action</h6>
-                                    <a class="name" href="#">
-                                        <h4>Star Wars</h4>
-                                    </a>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="info info-branch">
-                                    <p class="location">
-                                        <i class="fa fa-map-marker" title="Branches"></i>
-                                            <span class="LA">Los Angeles</span>
-                                            <span class="CH">Chicago</span>
-                                            <span class="SF">San Francisco</span>
-                                            <span class="FR">Fairfield</span>
-                                    </p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="collapse timelist"></div>
-                            <div class="footer">
-                                <button class="btn toggle-tickets">Timetable &gt; Order</button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="lslide" style="margin-right: 20px;">
-                        <div class="ticket-card " data-opentext="Timetable > Order" data-closetext="Хаах">
-                        </div>
-                    </li>
-                    <li class="lslide" style="margin-right: 20px;">
-                        <div class="ticket-card " data-opentext="Timetable > Order" data-closetext="Хаах">
-                        </div>
-                    </li>
-                    <li class="lslide" style="margin-right: 20px;">
-                        <div class="ticket-card " data-opentext="Timetable > Order" data-closetext="Хаах">
-                        </div>
-                    </li>
-                    <li class="lslide" style="margin-right: 20px;">
-                        <div class="ticket-card " data-opentext="Timetable > Order" data-closetext="Хаах">
-                        </div>
-                    </li>
-                    <li class="clone right" style="margin-right: 20px;">
-                        <div class="ticket-card " data-opentext="Timetable > Order" data-closetext="Хаах">
-                        </div>
-                    </li>
-                    <li class="clone right" style="margin-right: 20px;">
-                        <div class="ticket-card " data-opentext="Timetable > Order" data-closetext="Хаах">
-                        </div>
-                    </li>
-                    <li class="clone right" style="margin-right: 20px;">
-                        <div class="ticket-card " data-opentext="Timetable > Order" data-closetext="Хаах">
-                        </div>
-                    </li>
-                    <li class="clone right" style="margin-right: 20px;">
-                        <div class="ticket-card " data-opentext="Timetable > Order" data-closetext="Хаах">
-                        </div>
-                    </li>
-                </ul>
-                <div class="lSAction">
-                    <a class="lSPrev"></a>
-                    <a class="lSNext"></a>
-                </div>
-            </div>
+    <div id="Carousel" class="carousel slide multi-item-carousel">
+        <!-- Carousel items -->
+        <div id="movies" class="carousel-inner">
+        </div><!--.carousel-inner-->
+        <div class="lSAction">
+            <a id="prevBtn" data-slide="prev" href="#Carousel" class="left carousel-control"></a>
+            <a id="nextBtn" data-slide="next" href="#Carousel" class="right carousel-control"></a>
         </div>
-    </div>
+    </div><!--.Carousel-->
 </div>
