@@ -540,8 +540,8 @@ div#nav li.current a {
     z-index: 99;
     margin-top: -16px;
     opacity: .7;
-    -webkit-transition: opacity .35s linear 0s;
-    transition: opacity .35s linear 0s;
+    -webkit-transition: opacity .80s linear 0s;
+    transition: opacity .80s linear 0s;
 }
 
 #about .lSAction > .lSPrev {
@@ -624,7 +624,7 @@ div#nav li.current a {
     display: none;
 }
 
-#about #timetable > div {
+#about .schedule > div {
     width: 57px;
     background-color: #adadad;
     border-radius: 8px;
