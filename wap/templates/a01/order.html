@@ -9,9 +9,8 @@
 <div class="row">
 
 
-    <h2>Modal Example</h2>
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
 
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
@@ -25,30 +24,23 @@
         </div>
         <div class="modal-body">
 
-            <!-- email -->
-            <!-- cardnum = models.CharField(max_length=30)
-            expdate = models.DateField()
-            startdate = models.DateField() -->
-
-
-            <form id="myform" class="" action="">
+            <form id="myform" class="" action="">{% csrf_token %}
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" type="text" class="form-control" id="email" placeholder="name@example.com">
                 </div>
                 <div class="form-group">
                     <label for="cardnum">Card Number</label>
-                    <input required pattern="
-                    ^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$" type="text" class="form-control" id="cardnum" placeholder="1234-1234-1234-1234">
+                    <input required type="text" class="form-control" id="cardnum" placeholder="1234-1234-1234-1234">
                 </div>
 
                 <div class="form-group">
                     <label for="startdate">Start Date</label>
-                    <input required pattern="" type="date" class="form-control" id="startdate" max="2050-12-31" placeholder="1999-09-11">
+                    <input required type="date" class="form-control" id="startdate" max="2050-12-31" placeholder="1999-09-11">
                 </div>
                 <div class="form-group">
                     <label for="expdate">Expiration Date</label>
-                    <input required pattern="" type="date" class="form-control" id="expdate" placeholder="2010-01-01">
+                    <input required type="date" class="form-control" id="expdate" placeholder="2010-01-01">
                 </div>
 
 
@@ -96,7 +88,7 @@ jQuery(document).ready(function($) {
 
             var html = ''
             for (var i = 0, len = 6; i < len; i++) {
-                var td = '<div class="two columns"><button hall="'+data[i].hall+'" sdate="'+ data[i].sdate+'" stime="'+ data[i].stime +'" class="btn mybuttons">' + data[i].movie + '</button></div>';
+                var td = '<div class="two columns"><button hall="'+data[i].fields.hall+'" sdate="'+ data[i].fields.sdate+'" stime="'+ data[i].fields.stime +'" class="btn mybuttons">' + data[i].fields.movie + '</button></div>';
                 html += td;
             }
             html += '';
@@ -118,6 +110,42 @@ $(document).on('click','.mybuttons', function(){
     );
 
     console.log(datas);
+
 });
+
+
+jQuery(document).ready(function($) {
+
+
+        var form = $('#myform');
+        form.submit(function(e){
+            e.preventDefault();
+
+            var email = $("#email").val();
+            var cardnum = $("#cardnum").val();
+            var startdate = $("#startdate").val();
+            var expdate = $("#expdate").val();
+            var token = $("input[name~='csrfmiddlewaretoken']").first().val();
+
+            $.ajax({
+                type: 'POST',
+                url: '/payment/pay/',
+                data: {
+                    'csrfmiddlewaretoken': token,
+                    'email': email,
+                    'cardnum': cardnum,
+                    'startdate': startdate,
+                    'expdate': expdate,
+                },
+                dataType: "json",
+                success: function(resultData) {
+                    alert("Save Complete")
+                }
+            });
+        });
+
+});
+
+
 
 </script>

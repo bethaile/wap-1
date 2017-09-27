@@ -29,10 +29,10 @@ class Movie(models.Model, ToJson):
     yurl = models.URLField(max_length=500, null=True, blank=True)
     description = models.CharField(max_length=256, null=True, blank=True)
 
-    director = models.CharField(max_length="50")
-    screenplay = models.CharField(max_length="50")
-    composer = models.CharField(max_length="50")
-    producers = ArrayField(models.CharField(max_length="50"), null=True, blank=True)
+    director = models.CharField(max_length=50)
+    screenplay = models.CharField(max_length=50)
+    composer = models.CharField(max_length=50)
+    producers = ArrayField(models.CharField(max_length=50), null=True, blank=True)
 
 
 
