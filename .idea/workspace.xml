@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aebf3ba1-5f31-436a-bb23-054cee449320" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wap/templates/a01/movie.html" afterPath="$PROJECT_DIR$/wap/templates/a01/movie.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wap/templates/static/css/layout.css" afterPath="$PROJECT_DIR$/wap/templates/static/css/layout.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,8 +25,8 @@
       <file leaf-file-name="layout.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wap/templates/static/css/layout.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="630" column="16" lean-forward="true" selection-start-line="630" selection-start-column="16" selection-end-line="630" selection-end-column="16" />
+            <state relative-caret-position="335">
+              <caret line="541" column="16" lean-forward="true" selection-start-line="541" selection-start-column="16" selection-end-line="541" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -49,6 +51,17 @@
               <caret line="84" column="27" lean-forward="false" selection-start-line="84" selection-start-column="27" selection-end-line="84" selection-end-column="27" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
+                <marker date="1506528501324" expanded="true" signature="547:1315" ph="..." />
+                <marker date="1506528501324" expanded="true" signature="1243:1315" ph="..." />
+                <marker date="1506528501324" expanded="true" signature="1351:1548" ph="..." />
+                <marker date="1506528501324" expanded="true" signature="1475:1548" ph="..." />
+                <marker date="1506528501324" expanded="true" signature="1589:2238" ph="..." />
+                <marker date="1506528501324" expanded="true" signature="2062:2165" ph="..." />
+                <marker date="1506528501324" expanded="true" signature="2204:2238" ph="..." />
+                <marker date="1506528501324" expanded="true" signature="2278:2781" ph="..." />
+                <marker date="1506528501324" expanded="true" signature="2709:2781" ph="..." />
+                <marker date="1506528501324" expanded="true" signature="2820:3082" ph="..." />
+                <marker date="1506528501324" expanded="true" signature="3001:3082" ph="..." />
               </folding>
             </state>
           </provider>
@@ -57,8 +70,8 @@
       <file leaf-file-name="movie.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wap/templates/a01/movie.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="82" column="32" lean-forward="false" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
+            <state relative-caret-position="238">
+              <caret line="71" column="33" lean-forward="true" selection-start-line="71" selection-start-column="33" selection-end-line="71" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -122,6 +135,7 @@
       <find>ticket-card</find>
       <find>hiddenButton</find>
       <find>#Carousel</find>
+      <find>:hover</find>
     </findStrings>
     <replaceStrings>
       <replace>&lt;li class=&quot;carousel-item</replace>
@@ -143,8 +157,8 @@
         <option value="$PROJECT_DIR$/wap/templates/a01/home.html" />
         <option value="$PROJECT_DIR$/a01/models.py" />
         <option value="$PROJECT_DIR$/a01/urls.py" />
-        <option value="$PROJECT_DIR$/wap/templates/static/css/layout.css" />
         <option value="$PROJECT_DIR$/a01/views.py" />
+        <option value="$PROJECT_DIR$/wap/templates/static/css/layout.css" />
         <option value="$PROJECT_DIR$/wap/templates/a01/movie.html" />
       </list>
     </option>
@@ -196,30 +210,6 @@
               <item name="wap-1" type="462c0819:PsiDirectoryNode" />
               <item name="wap" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wap-1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wap-1" type="462c0819:PsiDirectoryNode" />
-              <item name="wap" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wap-1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wap-1" type="462c0819:PsiDirectoryNode" />
-              <item name="wap" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="wap-1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wap-1" type="462c0819:PsiDirectoryNode" />
-              <item name="wap" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-              <item name="movies" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -420,7 +410,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282313" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282313" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.8828697" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32993197" sideWeight="0.8828697" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282313" sideWeight="0.49707174" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -500,6 +490,17 @@
           <caret line="84" column="27" lean-forward="false" selection-start-line="84" selection-start-column="27" selection-end-line="84" selection-end-column="27" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
+            <marker date="1506528501324" expanded="true" signature="547:1315" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="1243:1315" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="1351:1548" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="1475:1548" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="1589:2238" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="2062:2165" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="2204:2238" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="2278:2781" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="2709:2781" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="2820:3082" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="3001:3082" ph="..." />
           </folding>
         </state>
       </provider>
@@ -618,20 +619,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wap/templates/static/css/layout.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="630" column="16" lean-forward="true" selection-start-line="630" selection-start-column="16" selection-end-line="630" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/a01/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="846">
           <caret line="84" column="27" lean-forward="false" selection-start-line="84" selection-start-column="27" selection-end-line="84" selection-end-column="27" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
+            <marker date="1506528501324" expanded="true" signature="547:1315" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="1243:1315" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="1351:1548" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="1475:1548" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="1589:2238" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="2062:2165" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="2204:2238" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="2278:2781" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="2709:2781" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="2820:3082" ph="..." />
+            <marker date="1506528501324" expanded="true" signature="3001:3082" ph="..." />
           </folding>
         </state>
       </provider>
@@ -646,10 +650,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/wap/templates/static/css/layout.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="541" column="16" lean-forward="true" selection-start-line="541" selection-start-column="16" selection-end-line="541" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/wap/templates/a01/movie.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="82" column="32" lean-forward="false" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
+        <state relative-caret-position="238">
+          <caret line="71" column="33" lean-forward="true" selection-start-line="71" selection-start-column="33" selection-end-line="71" selection-end-column="33" />
           <folding />
         </state>
       </provider>

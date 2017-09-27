@@ -44,15 +44,12 @@
             html += '           <div class="info info-branch">';
             html += '               <p class="location">';
             html += '                   <i class="fa fa-map-marker" title="Branches"></i>';
-            html += '                   <span class="LA">Los Angeles</span>';
-            html += '                   <span class="CH">Chicago</span>';
-            html += '                   <span class="SF">San Francisco</span>';
-            html += '                   <span class="FR">Fairfield</span>';
+            html += '                   <span class="LA">Hall - 1</span>';
             html += '               </p>';
             html += '           </div>';
             html += '           <div class="clearfix"></div>';
             html += '       </div>';
-            html += '       <div id="timetable" class="schedule timelist collapse" aria-expanded="false">' +
+            html += '       <div id="'+value.pk+'" class="schedule timelist collapse" aria-expanded="false">' +
                             '</div>';
             html += '       <div class="footer">';
             html += '           <button id="'+value.pk+'" class="btn toggle-tickets">Order</button>';
@@ -68,29 +65,31 @@
         });
 
          document.getElementById('prevBtn').click();
-
+{#        $(".lSAction>a").on("click", function(){#}
+{#            $(".schedule").html("");#}
+{#        });#}
         $(".footer>button").on("click", function(){
-            var clicked = $(this);
-            if(clicked.html()  == "Order" ){
-                clicked.html("Close");
-                console.log(this.id);
-                $(".schedule").addClass("in");
-                 $.ajax({
-                    url: "/screening/movie/" + this.id,
-                    type: "GET",
-                    dataType: "json",
-                }).done(function (data) {
-                    $(".schedule").html("");
-                    $.each(data, function (index, value) {
-                        var html = '<div><a href="#order">'+value.fields.stime+'</a></div>';
-                        $(".schedule").append(html);
-                    });
-                 });
-            }
-            else {
-                 clicked.html("Order");
-                 $(".schedule").removeClass("in");
-            }
+            console.log(this.id);
+{#            if(clicked.html()  == "Order" ){#}
+{#                clicked.html("Close");#}
+{#                $(".schedule").addClass("in");#}
+{#                 $.ajax({#}
+{#                    url: "/screening/movie/" + this.id,#}
+{#                    type: "GET",#}
+{#                    dataType: "json",#}
+{#                }).done(function (data) {#}
+{#                    var timetable = $(".schedule");#}
+{#                    timetable.html("");#}
+{#                    $.each(data, function (index, value) {#}
+{#                        var html = '<div><a href="#order">'+value.fields.stime+'</a></div>';#}
+{#                        timetable.append(html);#}
+{#                    });#}
+{#                 });#}
+{#            }#}
+{#            else {#}
+{#                 clicked.html("Order");#}
+{#                 $(".schedule").removeClass("in");#}
+{#            }#}
         });
     });
 
