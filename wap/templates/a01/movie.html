@@ -80,9 +80,10 @@
                     type: "GET",
                     dataType: "json",
                 }).done(function (data) {
+                    $("#timetable").html("");
                     $.each(data, function (index, value) {
-{#                        var html = '';#}
-{#                        $("#movies").append(html);#}
+                        var html = '<div><a href="#order">'+value.fields.stime+'</a></div>';
+                        $("#timetable").append(html);
                     });
                  });
             }
