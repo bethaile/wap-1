@@ -166,9 +166,8 @@ class ScreeningReserveView(View):
 
 
 class ScreeningByMovieView(View):
-
     def get(self, req, id):
         obj = get_object_or_404(Movie, pk=id)
-        screens = Screening.objects.filter(movie=obj, sdate=datetime.date.today())
+        screens = Screening.objects.filter(movie=obj)
         json_data = serializers.serialize('json', screens)
         return HttpResponse(json_data, content_type='json')
