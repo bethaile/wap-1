@@ -130,12 +130,26 @@ class TicketOrder(View):
 class PaymentPayView(View):
     def post(self, request):
 
-        customer_id = request.POST.get('customer_id')
+        screening_id = request.POST.get('screening_id')
         cardnum = request.POST.get('cardnum')
+        email = request.POST.get('email')
         startdate = request.POST.get('startdate')
         expdate = request.POST.get('expdate')
 
-        customer = get_object_or_404(Customer, pk=customer_id)
+        total_seats = request.POST.get('total_seats')
+        seats = request.POST.get('seats')
+
+
+        screen = get_object_or_404(Screening, pk=screening_id)
+        screen.totalcustomer += total_seats
+        screen.seats = seats
+        screen.save()
+
+        customer = Customer()
+        customer.email = email
+        customer.screen = screen
+        customer.totalcustomer = total_seats
+        customer.save()
 
         payment = Payment()
         payment.customer = customer
@@ -143,7 +157,6 @@ class PaymentPayView(View):
         payment.startdate = startdate
         payment.expdate = expdate
         payment.save()
-
 
         return HttpResponse(content_type="application/json", status_code=200)
 
