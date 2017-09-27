@@ -39,7 +39,7 @@ urlpatterns = [
     url(r'^payment/list/$', PaymentListView.as_view(), name='payment'),
 
 
-    url(r'^screening/(?P<id>[0-9]+)/$', ScreeningByMovieView.as_view(), name='payment_pay'),
+    url(r'^screening/movie/(?P<id>[0-9]+)/$', ScreeningByMovieView.as_view(), name='payment_pay'),
 
     url(r'^payment/pay/$', PaymentPayView.as_view(), name='payment_pay'),
 
