@@ -77,7 +77,7 @@ class ListView(View):
     get_class = None
 
     def get(self, *args):
-        obj_list = self.get_class.objects.all()[:3]
+        obj_list = self.get_class.objects.all()
         json_data = serializers.serialize('json', obj_list)
 
         return HttpResponse(json_data, content_type='json')
