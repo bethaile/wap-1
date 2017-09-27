@@ -204,10 +204,23 @@ div#nav li.current a {
 /* ------------------------------------------------------------------ */
 
 #about {
-    background: #2B2B2B;
-    padding-top: 96px;
-    padding-bottom: 66px;
+    background: #383838 url(/static/images/about/lowpoly3.jpg) no-repeat center center;
+    background-size: 100%;
     overflow: hidden;
+}
+
+#about .row {
+    margin-left: -15px;
+    margin-right: -15px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+    #about .coll {
+        width: 100%;
+        float: left;
+    }
 }
 
 #about a, #about a:visited {
@@ -264,7 +277,7 @@ div#nav li.current a {
     font-size: 20px;
 }
 
-#about .col_md {
+#about .coll {
     position: relative;
     min-height: 1px;
     padding-left: 15px;
@@ -274,9 +287,17 @@ div#nav li.current a {
 }
 
 #about .lSSlideOuter {
-    margin-top: -40px;
+    margin-top: -100px;
     overflow: hidden;
     user-select: none;
+}
+
+#about .lSSlideOuter, .lSSlideOuter .lSPager.lSGallery {
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-touch-callout: none;
+    /* -webkit-user-select: none; */
 }
 
 #about li {
@@ -331,7 +352,8 @@ div#nav li.current a {
     margin: 40px auto 20px;
     background: #fff;
     border-radius: 4px;
-    width: 350px;
+    width: 277px;
+    float: left;
 }
 
 #about .ticket-card .cover {
@@ -359,6 +381,10 @@ div#nav li.current a {
 
 #about .collapse {
     display: none;
+}
+
+#about .collapse.in {
+    display: block;
 }
 
 #about .ticket-card .cover .img {
@@ -393,15 +419,26 @@ div#nav li.current a {
     border-radius: 8px;
 }
 
-.no-touch .ticket-card .cover .img:hover img,
-.ticket-card .cover .img.cs-hover  img{
-	-webkit-transform: translateY(-90px);
-	-moz-transform: translateY(-90px);
-	-ms-transform: translateY(-90px);
-	transform: translateY(-90px);
+#about .ticket-card .cover .img {
+    z-index: 10;
+    -webkit-transition: -webkit-transform 0.4s;
+    -moz-transition: -moz-transform 0.4s;
+    transition: transform 0.2s;
 }
 
-#about img{
+#about .ticket-card .cover .img:hover {
+    -webkit-transform: translateY(-45px);
+    -moz-transform: translateY(-45px);
+    -ms-transform: translateY(-45px);
+    transform: translateY(-45px);
+}
+
+#about .ticket-card .cover .info .tickets-left {
+    float: right;
+    text-align: right;
+}
+
+#about img {
     vertical-align: middle;
 }
 
@@ -447,7 +484,7 @@ div#nav li.current a {
     user-select: none;
 }
 
-#about.ticket-card .body .location>span:after {
+#about.ticket-card .body .location > span:after {
     content: ",";
 }
 
@@ -492,7 +529,7 @@ div#nav li.current a {
     -moz-osx-font-smoothing: grayscale;
 }
 
-#about .lSAction > a {
+#about .slideActions > a {
     width: 97px;
     display: block;
     top: 50%;
@@ -503,8 +540,8 @@ div#nav li.current a {
     z-index: 99;
     margin-top: -16px;
     opacity: .7;
-    -webkit-transition: opacity .35s linear 0s;
-    transition: opacity .35s linear 0s;
+    -webkit-transition: opacity .80s linear 0s;
+    transition: opacity .80s linear 0s;
 }
 
 #about .lSAction > .lSPrev {
@@ -515,13 +552,85 @@ div#nav li.current a {
 #about .lSAction > .lSNext {
     background-position: -97px 0;
     right: 0;
+    left: auto;
 }
-
 
 #about * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+#about body {
+    padding-top: 20px;
+}
+
+#about .carousel {
+    margin-bottom: 0;
+    padding: 0 40px 30px 40px;
+}
+
+#about .carousel-inner {
+    padding-top: 50px;
+}
+
+/* The colour of the indicators */
+#about .carousel-indicators li {
+    background: #cecece;
+}
+
+#about .carousel-indicators .active {
+    background: #428bca;
+}
+
+#about .div-left {
+    padding-top: 72px;
+    padding-right: 39px;
+    width: 39%;
+    float: left;
+}
+
+#about .div-left > p {
+    font-size: large;
+    text-align: justify;
+}
+
+#about .div-right {
+    padding-top: 72px;
+    width: 38%;
+    margin-left: 5px;
+    float: left;
+    text-align: -webkit-center;
+}
+
+#about iframe {
+    border-radius: 13px;
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+    height: -webkit-fill-available;
+    width: 427px;
+    height: 235px;
+}
+
+#about iframe:hover {
+    border-radius: 13px;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    border-radius: 13px;
+
+}
+
+#about .hiddenButton {
+    display: none;
+}
+
+#about .schedule > div {
+    width: 57px;
+    background-color: #adadad;
+    border-radius: 8px;
+    float: left;
+    margin-right: 5px;
+    text-align:center;
 }
 
 /* ------------------------------------------------------------------ */

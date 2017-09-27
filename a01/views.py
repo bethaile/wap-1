@@ -1,4 +1,9 @@
 
+import json
+import datetime
+
+from django.db import models
+
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 
@@ -101,9 +106,73 @@ class PaymentListView(ListView):
 class TicketOrder(View):
 
     def post(self):
-
-        
-
-
-
         pass
+
+
+class PaymentPayView(View):
+    def post(self, request):
+        screening_id = request.POST.get('screening_id')
+        cardnum = request.POST.get('cardnum')
+        email = request.POST.get('email')
+        startdate = request.POST.get('startdate')
+        expdate = request.POST.get('expdate')
+
+        total_seats = request.POST.get('total_seats')
+        sendseats = request.POST.get('seats')
+        userseats = request.POST.get('userseats')
+
+        sendseats = json.loads(sendseats)
+        userseats = json.loads(userseats)
+
+        screen = get_object_or_404(Screening, pk=screening_id)
+        screen.totalcustomer += int(total_seats)
+        screen.seats = sendseats
+        screen.save()
+
+        customer = Customer()
+        customer.email = email
+        customer.screen = screen
+        customer.seats = int(total_seats)
+        customer.bseats = userseats
+        customer.save()
+
+        payment = Payment()
+        payment.customer = customer
+        payment.cardnum = cardnum
+        payment.startdate = startdate
+        payment.expdate = expdate
+        payment.save()
+
+        return HttpResponse({'msg': 'Payment is completed'}, content_type='json')
+
+
+
+class ScreeningReserveView(View):
+    def post(self, request):
+        pdata = request.POST
+
+
+        screen = get_object_or_404(Screening, pk=pdata.get('screen_id'))
+        customer = Customer()
+        customer.screen = screen
+        customer.email = pdata.get('email')
+        customer.seats = pdata.get('seats')
+        customer.bseats = pdata.get('bseats')
+        customer.save()
+
+        return HttpResponse(content_type="application/json", status_code=200)
+
+
+class ScreeningByMovieView(View):
+    def get(self, req, id):
+        obj = get_object_or_404(Movie, pk=id)
+        screens = Screening.objects.filter(movie=obj)
+        json_data = serializers.serialize('json', screens)
+        return HttpResponse(json_data, content_type='json')
+
+
+class LatestMoviesView(View):
+    def get(self, *args):
+        screens = Screening.objects.filter(sdate__month=9, sdate__year=2017)
+        json_data = serializers.serialize('json', screens)
+        return HttpResponse(json_data, content_type='json')
