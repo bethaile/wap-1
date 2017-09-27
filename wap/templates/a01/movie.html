@@ -73,16 +73,17 @@
             var clicked = $(this);
             if(clicked.html()  == "Order" ){
                 clicked.html("Close");
-                console.log($('.footer>button').attr('id'));
+                console.log(this.id);
                 $(".schedule").addClass("in");
                  $.ajax({
-                    url: "/screening/movie/" + $(this).attr('id'),
+                    url: "/screening/movie/" + this.id,
                     type: "GET",
                     dataType: "json",
                 }).done(function (data) {
+                    $(".schedule").html("");
                     $.each(data, function (index, value) {
-{#                        var html = '';#}
-{#                        $("#movies").append(html);#}
+                        var html = '<div><a href="#order">'+value.fields.stime+'</a></div>';
+                        $(".schedule").append(html);
                     });
                  });
             }

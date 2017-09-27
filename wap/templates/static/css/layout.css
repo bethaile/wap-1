@@ -353,7 +353,7 @@ div#nav li.current a {
     background: #fff;
     border-radius: 4px;
     width: 277px;
-    float:left;
+    float: left;
 }
 
 #about .ticket-card .cover {
@@ -383,7 +383,7 @@ div#nav li.current a {
     display: none;
 }
 
-#about .collapse.in{
+#about .collapse.in {
     display: block;
 }
 
@@ -570,9 +570,10 @@ div#nav li.current a {
     padding: 0 40px 30px 40px;
 }
 
-#about .carousel-inner{
+#about .carousel-inner {
     padding-top: 50px;
 }
+
 /* The colour of the indicators */
 #about .carousel-indicators li {
     background: #cecece;
@@ -582,45 +583,56 @@ div#nav li.current a {
     background: #428bca;
 }
 
-#about .div-left{
+#about .div-left {
     padding-top: 72px;
     padding-right: 39px;
     width: 39%;
     float: left;
 }
-#about .div-left>p{
+
+#about .div-left > p {
     font-size: large;
     text-align: justify;
 }
-#about .div-right{
+
+#about .div-right {
     padding-top: 72px;
     width: 38%;
-    margin-left:5px;
+    margin-left: 5px;
     float: left;
     text-align: -webkit-center;
 }
 
-#about iframe{
+#about iframe {
     border-radius: 13px;
     -webkit-filter: blur(3px);
-	filter: blur(3px);
+    filter: blur(3px);
     height: -webkit-fill-available;
     width: 427px;
     height: 235px;
 }
 
-#about iframe:hover{
+#about iframe:hover {
     border-radius: 13px;
     -webkit-filter: blur(0);
-	filter: blur(0);
+    filter: blur(0);
     border-radius: 13px;
 
 }
 
-
-#about .hiddenButton{
-    display:none;
+#about .hiddenButton {
+    display: none;
 }
+
+#about #timetable > div {
+    width: 57px;
+    background-color: #adadad;
+    border-radius: 8px;
+    float: left;
+    margin-right: 5px;
+    text-align:center;
+}
+
 /* ------------------------------------------------------------------ */
 /* d. Order Section
 /* ------------------------------------------------------------------ */
