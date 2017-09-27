@@ -25,7 +25,7 @@ class Movie(models.Model, ToJson):
     runtime = models.PositiveIntegerField()
     category = models.CharField(max_length=10)
     release_date = models.DateField()
-    img = models.ImageField(upload_to="wap/templates/static/images/movies/", storage=fs)
+    img = models.ImageField(upload_to="movies/", storage=fs)
     yurl = models.URLField(max_length=500, null=True, blank=True)
     description = models.CharField(max_length=256, null=True, blank=True)
 
