@@ -28,18 +28,18 @@ $(document).on('click', '.number-spinner button', function () {
 });
 
 
-var sel_seats=0;
+sel_seats=0;
 
-function generate_table(x,y) {
+function generate_table1(seats)
+{
+
   // get the reference for the body
-  <!--var body = document.getElementsByTagName("body")[0];
+  //<!--var body = document.getElementsByTagName("body")[0];
   document.getElementById("btn").disabled = true;
   // creates a <table> element and a <tbody> element
 
     var tbl = document.createElement("table");
 	var tblBody = document.createElement("tbody");
-
-
 
   document.getElementById("seata").appendChild(tbl);
   // creating all cells
@@ -65,7 +65,8 @@ function generate_table(x,y) {
 
 	  image.onclick=function(){
 		  changeImage(this,image.id);
-		  }; <!--"javascript:changeImage(this)";
+		  };
+
       cell.appendChild(image);
 
       row.appendChild(cell);
@@ -75,45 +76,29 @@ function generate_table(x,y) {
     tblBody.appendChild(row);
 	}
 
-  // put the <tbody> in the <table>
-   if  (document.getElementById("btn").value=="Reset")
-  {
-	     //tblBody.removeChild(row);
-		 //tbl.removeChild(tblBody);
-		// generate_table(10,10);
 
-  }else{
-   		  tbl.appendChild(tblBody);
-	  }
   tbl.appendChild(tblBody);
   // appends <table> into <body>
-  <!--body.appendChild(tbl);
+
   // sets the border attribute of tbl to 2;
   tbl.setAttribute("border", "2");
-  document.getElementById("btn").value="Reset";
+  //document.getElementById("btn").value="Reset";
 }
 
 function generate_booked()
 {
 
- var ctext="["+"<br>";
    for (var i = 0; i < seats.length; i++) {
-	       ctext=ctext+"[";
-		    for (var j = 0; j < seats[i].length; j++)
-			{
+        for (var j = 0; j < seats[i].length; j++)
+        {
 
-			 if (seats[i][j]==2)
-             {
-                 sel_seats=sel_seats+1;
-                 seats[i][j]=1;
-             }
-             ctext=ctext+seats[i][j]+" ";
-			}
-			ctext=ctext+"]"+"<br>";
-	   }
-  ctext=ctext+"]";
-  document.write(ctext);
-  document.write(sel_seats);
+         if (seats[i][j]==2)
+         {
+             sel_seats=sel_seats+1;
+             seats[i][j]=1;
+         }			}
+   }
+   return seats;
 }
 
 function changeImage(x,imgId)
@@ -147,7 +132,6 @@ else
    }
   }
 }
-
 }
 //}
 </script>
@@ -171,7 +155,17 @@ else
     </div>
 </div>
 
- <div id="seata"> </div>
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+        <div id="seata"> </div>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>
 
 
  <div id="seatb"> </div>
@@ -179,8 +173,9 @@ else
 
  <div class="row">
 
+       <!--<button type="button" onclick="generate_table()" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Seats</button>-->
 
-       <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
 
    <!-- Modal -->
@@ -233,18 +228,80 @@ else
  $(document).on('change', '#screentimes', function() {
      var scrpk = this.value;
      console.log("onchange");
+
      $.ajax({
          type: "GET",
          dataType : 'json',
          url: '/screening/'+scrpk+'/',
          success: function (data){
              screenData = data[0];
-             seats = JSON.parse(screenData.fields.seats);
+             seats = convert(JSON.parse(screenData.fields.seats));
+             console.log(seats);
+             $('#seata').html('');
+             generate_table(seats);
+
+             //document.write("where");
          },
          failure: function() {alert("Error!");}
      });
  });
 
+
+convert = function(data){
+     returndata = [];
+    for (var i = 0; i < data.length; i++) {
+        mydata = data[i].replace(/["]/g, '');
+        mydata = mydata.replace('[', '');
+        mydata = mydata.replace(']', '');
+        ret = mydata.split(', ').map(Number);
+        returndata.push(ret);
+  	}
+    return returndata;
+ }
+
+function generate_table(seats)
+{
+
+    var tbl = document.createElement("table");
+	var tblBody = document.createElement("tbody");
+
+  document.getElementById("seata").appendChild(tbl);
+  // creating all cells
+
+  for (var i = 0; i < seats.length; i++) {
+    // creates a table row
+    var row = document.createElement("tr");
+
+    for (var j = 0; j < seats[i].length; j++) {
+      //document.write(seats[i][j]);
+      var cell = document.createElement("td");
+      var cellText = document.createTextNode("cell");
+
+	  var image = document.createElement('img');
+	  if (seats[i][j]==0)
+          {image.src = "../static/images/free.jpg";}
+	  else
+	      {image.src = "../static/images/booked.jpg";}
+
+	  image.id="s"+i+","+j;
+
+	  image.onclick=function(){
+		  changeImage(this,image.id);
+		  };
+
+      cell.appendChild(image);
+
+      row.appendChild(cell);
+    }
+
+    // add the row to the end of the table body
+    tblBody.appendChild(row);
+	}
+  tbl.appendChild(tblBody);
+
+  tbl.setAttribute("border", "2");
+  //document.getElementById("btn").value="Reset";
+}
 
  $(document).on('click','.mybuttons', function(){
      var hall = $(this).attr('hall');
