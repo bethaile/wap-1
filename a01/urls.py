@@ -17,6 +17,12 @@ from a01.views import PaymentListView
 
 
 
+from a01.views import PaymentPayView
+from a01.views import ScreeningByMovieView
+
+
+
+
 urlpatterns = [
 
     url(r'^$', HomeView.as_view(), name='home'),
@@ -31,5 +37,10 @@ urlpatterns = [
     url(r'^screening/list/$', ScreeningListView.as_view(), name='screening'),
     url(r'^customer/list/$', CustomerListView.as_view(), name='customer'),
     url(r'^payment/list/$', PaymentListView.as_view(), name='payment'),
+
+
+    url(r'^screening/(?P<id>[0-9]+)/$', ScreeningByMovieView.as_view(), name='payment_pay'),
+
+    url(r'^payment/pay/$', PaymentPayView.as_view(), name='payment_pay'),
 
 ]
