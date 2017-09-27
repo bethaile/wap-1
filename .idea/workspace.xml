@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aebf3ba1-5f31-436a-bb23-054cee449320" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/wap/templates/static/images/movies/Kingsman_The_Golden_Circle.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/a01/views.py" afterPath="$PROJECT_DIR$/a01/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wap/templates/a01/movie.html" afterPath="$PROJECT_DIR$/wap/templates/a01/movie.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wap/templates/static/css/layout.css" afterPath="$PROJECT_DIR$/wap/templates/static/css/layout.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -61,8 +57,8 @@
       <file leaf-file-name="movie.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wap/templates/a01/movie.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="48" lean-forward="false" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+            <state relative-caret-position="204">
+              <caret line="82" column="32" lean-forward="false" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -652,8 +648,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wap/templates/a01/movie.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="48" lean-forward="false" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+        <state relative-caret-position="204">
+          <caret line="82" column="32" lean-forward="false" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
           <folding />
         </state>
       </provider>
